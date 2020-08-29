@@ -121,7 +121,7 @@ end
 
 
 function HunterHelper_PC:IsTargetPolymorphed()
-    local attackable = UnitCanAttack("player",unitId)
+    local attackable = UnitCanAttack("player","target")
     if not attackable then
         return false
     end
@@ -151,7 +151,7 @@ end
 
 
 function eventHandlers:UNIT_AURA()
-    polyStatus_Target = IsTargetPolymorphed()
-    polyStatus_Party = IsPartyMemberAttackable()
-    polyStatus_Raid = IsRaidMemberAttackable()
+    polyStatus_Target = HunterHelper_PC:IsTargetPolymorphed()
+    polyStatus_Party = HunterHelper_PC:IsPartyMemberAttackable()
+    polyStatus_Raid = HunterHelper_PC:IsRaidMemberAttackable()
 end

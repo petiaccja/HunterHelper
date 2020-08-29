@@ -5,5 +5,5 @@
 HunterHelper.lua
 PolymorphCheck.lua
 PolymorphCheck.xml
-WarningFrame.lua
-WarningFrame.xml
+SuggestionFrame.lua
+SuggestionFrame.xml
