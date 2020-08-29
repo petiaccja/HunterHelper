@@ -1,0 +1,53 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+                   ..\..\FrameXML\UI.xsd">
+  <Script File="WarningFrame.lua"/>
+  <Frame name="HunterHelper_WarningFrame">
+    <Size x="256" y="64"/>
+    <Anchors>
+      <Anchor point="CENTER" relativePoint="CENTER">
+        <Offset>
+              <RelDimension x="0.0" y="-0.15" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <Layer level="ARTWORK">
+        <Texture name="HunterHelper_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
+          <Size x="64" y="64"/>
+          <Color a="1" r="1" g="1" b="1"/>
+          <Anchors>
+            <Anchor point="LEFT"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_SuggestSerpent" file="interface/icons/ability_hunter_quickshot.blp">
+          <Size x="64" y="64"/>
+          <Color a="1" r="1" g="1" b="1"/>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestMark" relativePoint="RIGHT"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_SuggestAimed" file="interface/icons/inv_spear_07.blp">
+          <Size x="64" y="64"/>
+          <Color a="1" r="1" g="1" b="1"/>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestSerpent" relativePoint="RIGHT"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_SuggestMulti" file="interface/icons/ability_upgrademoonglaive.blp">
+          <Size x="64" y="64"/>
+          <Color a="1" r="1" g="1" b="1"/>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestAimed" relativePoint="RIGHT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Scripts>
+      <OnLoad>
+        HunterHelper_WF:OnLoad()
+      </OnLoad>
+    </Scripts>
+  </Frame>
+</Ui>

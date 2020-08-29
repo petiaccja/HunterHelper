@@ -1,0 +1,6 @@
+- warn not to Multi-shot if polymorphed targets are in range
+- warn not to Multi-shot if non-engaged targets are in range
+- warn to refresh Serpent Sting
+- warn to cast Aimed Shot if not on CD
+- warn if pet is left on aggressive mode
+- tell if you should cast hunter's mark
