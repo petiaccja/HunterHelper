@@ -6,13 +6,22 @@
   <Frame name="HunterHelper_SuggestionFrame">
     <Size x="256" y="64"/>
     <Anchors>
-      <Anchor point="CENTER" relativePoint="CENTER">
+      <Anchor point="TOPLEFT">
         <Offset>
-              <RelDimension x="0.0" y="-0.15" />
+              <AbsDimension x="300" y="300" />
         </Offset>
       </Anchor>
     </Anchors>
     <Layers>
+      <Layer level="BACKGROUND">
+        <Texture name="HunterHelper_SuggestBackground">
+          <Size x="256" y="64"/>
+          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestionFrame" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+      </Layer>
       <Layer level="ARTWORK">
         <Texture name="HunterHelper_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
           <Size x="64" y="64"/>

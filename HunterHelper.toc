@@ -1,9 +1,14 @@
 ## Interface: 11305 
 ## Title: HunterHelper
 ## Notes: A small AddOn that helps you with your rotation.
+## SavedVariables: g_hunterHelperConfig
 ## Version: 1.0
 HunterHelper.lua
 PolymorphCheck.lua
-PolymorphCheck.xml
 SuggestionFrame.lua
+WarningFrame.lua
+Configuration.lua
+PolymorphCheck.xml
 SuggestionFrame.xml
+WarningFrame.xml
+Configuration.xml

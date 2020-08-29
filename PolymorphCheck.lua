@@ -1,7 +1,7 @@
 HunterHelper_PC = {}
 
 local function AuraInfo(duration)
-    auraInfo = {}
+    local auraInfo = {}
     auraInfo.duration = duration
     return auraInfo
 end
@@ -41,6 +41,7 @@ function HunterHelper_PC:OnLoad()
     HunterHelper_PolyFrame:SetScript("OnEvent", HunterHelper_PC.OnEvent)
     HunterHelper_PolyFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
     HunterHelper_PolyFrame:RegisterEvent("UNIT_AURA")
+    HunterHelper_PolyFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
     HunterHelper_PC.sweepTicker = C_Timer.NewTicker(0.5, HunterHelper_PC.SweepExpired)
 end
 
@@ -96,11 +97,11 @@ end
 
 
 function HunterHelper_PC:IsRaidMemberAttackable()
-    anyAttackable = false
     for i=1,40 do
         local unitId = "raid" .. i
-        local attackable = UnitCanAttack("player",unitId)
-        if attackable then
+        local isAttackable = UnitCanAttack("player",unitId)
+        local isInRange = IsSpellInRange("Multi-Shot", "target")
+        if isAttackable and isInRange then
             return true
         end
     end
@@ -111,8 +112,9 @@ end
 function HunterHelper_PC:IsPartyMemberAttackable()
     for i=1,4 do
         local unitId = "party" .. i
-        local attackable = UnitCanAttack("player",unitId)
-        if attackable then
+        local isAttackable = UnitCanAttack("player",unitId)
+        local isInRange = IsSpellInRange("Multi-Shot", "target")
+        if isAttackable and isInRange then
             return true
         end
     end
@@ -125,13 +127,21 @@ function HunterHelper_PC:IsTargetPolymorphed()
     if not attackable then
         return false
     end
-    local auras = HunterHelper:GetAllAuras("target")
+    local auras = HunterHelper:GetAllAuras("target", "HARMFUL")
     for k,aura in pairs(auras) do
         if trackedSpells[aura.name] ~= nil then
             return true
         end
     end
     return false
+end
+
+
+function HunterHelper_PC:UpdateWarningFrame()
+    local warnMulti = polyStatus_Log
+    local blockSingle = polyStatus_Target
+    local blockMulti = polyStatus_Raid or polyStatus_Party
+    HunterHelper_WF:Update(warnMulti, blockSingle, blockMulti)
 end
 
 
@@ -146,7 +156,8 @@ function eventHandlers:COMBAT_LOG_EVENT_UNFILTERED()
         HunterHelper_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
     end
     
-    polyStatus_Log = next(unitTracker) ~= nil
+    polyStatus_Log = next(unitTracker) ~= nil    
+    HunterHelper_PC:UpdateWarningFrame()
 end
 
 
@@ -154,4 +165,13 @@ function eventHandlers:UNIT_AURA()
     polyStatus_Target = HunterHelper_PC:IsTargetPolymorphed()
     polyStatus_Party = HunterHelper_PC:IsPartyMemberAttackable()
     polyStatus_Raid = HunterHelper_PC:IsRaidMemberAttackable()
+
+    HunterHelper_PC:UpdateWarningFrame()
+end
+
+
+function eventHandlers:PLAYER_TARGET_CHANGED()
+    polyStatus_Target = HunterHelper_PC:IsTargetPolymorphed()
+
+    HunterHelper_PC:UpdateWarningFrame()
 end

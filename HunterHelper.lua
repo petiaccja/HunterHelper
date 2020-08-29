@@ -71,3 +71,8 @@ function HunterHelper:GetMark()
     end
     return nil
 end
+
+
+function HunterHelper:SetControlAlpha(control, alpha)
+    control:SetVertexColor(1,1,1,alpha)
+end

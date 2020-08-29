@@ -1,0 +1,45 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+                   ..\..\FrameXML\UI.xsd">
+  <Script File="WarningFrame.lua"/>
+  <Frame name="HunterHelper_WarningFrame">
+    <Size x="256" y="64"/>
+    <Anchors>
+      <Anchor point="CENTER"  relativeTo="HunterHelper_SuggestionFrame" relativePoint="CENTER"/>
+    </Anchors>
+    <Layers>
+      <Layer level="OVERLAY">
+        <Texture name="HunterHelper_BlockSerpent" file="Interface/Addons/HunterHelper/graphics/block_sign_2.blp">
+          <Size x="48" y="48"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestSerpent" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_BlockAimed" file="Interface/Addons/HunterHelper/graphics/block_sign_2.blp">
+          <Size x="48" y="48"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestAimed" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_BlockMulti" file="Interface/Addons/HunterHelper/graphics/block_sign_2.blp">
+          <Size x="48" y="48"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMulti" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_WarnMulti" file="Interface/Addons/HunterHelper/graphics/warning_sign_2.blp">
+          <Size x="48" y="48"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMulti" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Scripts>
+      <OnLoad>
+        HunterHelper_WF:OnLoad()
+      </OnLoad>
+    </Scripts>
+  </Frame>
+</Ui>
