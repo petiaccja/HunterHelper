@@ -44,9 +44,15 @@ end
 
 
 function HunterHelper_SF:SetConfig(config)
-    combatAlpha = config.combatAlpha
-    idleAlpha = config.idleAlpha
-    notargetAlpha = config.notargetAlpha
+    if config.enableBar then
+        combatAlpha = config.combatAlpha
+        idleAlpha = config.idleAlpha
+        notargetAlpha = config.notargetAlpha
+    else
+        combatAlpha = 0
+        idleAlpha = 0
+        notargetAlpha = 0
+    end
 
     HunterHelper:SetControlAlpha(HunterHelper_SuggestBackground, 0.6*HunterHelper_SF:GetAlpha())
     HunterHelper:SetControlAlpha(HunterHelper_SuggestSerpent, HunterHelper_SF:GetAlpha())
@@ -75,18 +81,27 @@ end
 
 
 function HunterHelper_SF:SuggestSerpent()
+    if not GetSpellInfo("Serpent Sting") then
+        return false
+    end
     local activeSting = HunterHelper:GetSting()
     return not activeSting and HunterHelper_SF:HasAttackableTarget()
 end
 
 
 function HunterHelper_SF:SuggestMark()
+    if not GetSpellInfo("Hunter's Mark") then
+        return false
+    end
     local hasMark = HunterHelper:GetMark()
     return not hasMark and HunterHelper_SF:HasAttackableTarget()
 end
 
 
 function HunterHelper_SF:SuggestAimed()
+    if not GetSpellInfo("Aimed Shot") then
+        return false
+    end
     local start, duration, enabled = GetSpellCooldown("Aimed Shot", "BOOKTYPE_SPELL");
     local isReady = duration < 1.6 -- GCD also counts as cooldown.
     return isReady and HunterHelper_SF:HasAttackableTarget()
@@ -94,6 +109,9 @@ end
 
 
 function HunterHelper_SF:SuggestMulti()
+    if not GetSpellInfo("Multi-Shot") then
+        return false
+    end
     local start, duration, enabled = GetSpellCooldown("Multi-Shot", "BOOKTYPE_SPELL");
     local isReady = duration < 1.6 -- GCD also counts as cooldown.
     return isReady and HunterHelper_SF:HasAttackableTarget()
@@ -155,6 +173,9 @@ end
 
 
 function HunterHelper_SF:OnCooldownFinish(spell, book, callback)
+    if not GetSpellInfo(spell) then
+        return
+    end
     local start, duration, enabled = GetSpellCooldown(spell, book);
     if duration > 1.6 then
         local delay = math.max(0, start + duration - GetTime() + 0.1)

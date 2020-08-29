@@ -23,9 +23,18 @@
                 </Anchor>
             </Anchors>
         </CheckButton>
-        <Slider name="HunterHelper_ConfigScale" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="16" maxValue="256" valueStep="1">
+        <CheckButton name="HunterHelper_ConfigToggleBar" inherits="OptionsCheckButtonTemplate" checked="true">
             <Anchors>
                 <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigDraggable" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </CheckButton>
+        <Slider name="HunterHelper_ConfigScale" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="16" maxValue="256" valueStep="1">
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigToggleBar" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-20"/>
                     </Offset>
@@ -120,9 +129,16 @@
     </Frames>
     <Layers>
         <Layer>
-            <FontString name="HunterHelper_ConfigLabelDraggable" text="Move frame" font="Fonts\FRIZQT__.TTF">
+            <FontString name="HunterHelper_ConfigLabelDraggable" text="Unlock bar" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="HunterHelper_ConfigDraggable" relativePoint="RIGHT"/>
+                </Anchors>
+                <Color r="1" g="1" b="1" a="1"/>
+                <FontHeight val="12"/>
+            </FontString>
+            <FontString name="HunterHelper_ConfigLabelToggleBar" text="Show bar" font="Fonts\FRIZQT__.TTF">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="HunterHelper_ConfigToggleBar" relativePoint="RIGHT"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>

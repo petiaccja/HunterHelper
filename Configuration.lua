@@ -54,6 +54,7 @@ end
 function HunterHelper_CFG:CreateDefaultConfig()
     local config = {}
     config.enableMove = false
+    config.enableBar = UnitClass("player") == "Hunter"
     config.size = 64
     config.combatAlpha = 1.0
     config.idleAlpha = 0.3
@@ -68,6 +69,7 @@ end
 
 function HunterHelper_CFG:SetScripts()
     HunterHelper_ConfigDraggable:SetScript("OnClick", HunterHelper_CFG.OnGuiUpdated)
+    HunterHelper_ConfigToggleBar:SetScript("OnClick", HunterHelper_CFG.OnGuiUpdated)
     HunterHelper_ConfigScale:SetScript("OnMouseUp", HunterHelper_CFG.OnGuiUpdated)
     HunterHelper_ConfigCombatAlpha:SetScript("OnMouseUp", HunterHelper_CFG.OnGuiUpdated)
     HunterHelper_ConfigIdleAlpha:SetScript("OnMouseUp", HunterHelper_CFG.OnGuiUpdated)
@@ -79,6 +81,7 @@ end
 
 function HunterHelper_CFG:SetConfigToGui(config)
     HunterHelper_ConfigDraggable:SetChecked(config.enableMove)
+    HunterHelper_ConfigToggleBar:SetChecked(config.enableBar)
     HunterHelper_ConfigScale:SetValue(config.size)
     HunterHelper_ConfigCombatAlpha:SetValue(config.combatAlpha)
     HunterHelper_ConfigIdleAlpha:SetValue(config.idleAlpha)
@@ -91,6 +94,7 @@ end
 function HunterHelper_CFG:GetConfigFromGui()
     local config = {}
     config.enableMove = HunterHelper_ConfigDraggable:GetChecked()
+    config.enableBar = HunterHelper_ConfigToggleBar:GetChecked()
     config.size = HunterHelper_ConfigScale:GetValue()
     config.combatAlpha = HunterHelper_ConfigCombatAlpha:GetValue()
     config.idleAlpha = HunterHelper_ConfigIdleAlpha:GetValue()

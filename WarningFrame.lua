@@ -1,5 +1,7 @@
 HunterHelper_WF = {}
 
+local enabled = true
+
 function HunterHelper_WF:OnLoad()
     HunterHelper_WF:Update(false, false, false)
 end
@@ -10,6 +12,10 @@ function HunterHelper_WF:Update(warnMulti, blockSingle, blockMulti)
     HunterHelper_BlockAimed:Hide()
     HunterHelper_BlockMulti:Hide()
     HunterHelper_WarnMulti:Hide()
+
+    if not enabled then
+        return
+    end
 
     if blockSingle then
         HunterHelper_BlockSerpent:Show()
@@ -30,4 +36,6 @@ function HunterHelper_WF:SetConfig(config)
     HunterHelper_BlockAimed:SetSize(size, size)
     HunterHelper_BlockMulti:SetSize(size, size)
     HunterHelper_WarnMulti:SetSize(size, size)
+
+    enabled = config.enableBar
 end
