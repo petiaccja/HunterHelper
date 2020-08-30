@@ -9,14 +9,26 @@
 TODO:
 
 1.
+Add an exhaustive list of polymorph spells.
+
+2.
+Remove icons for spells the Hunter doesn't have.
+
+3.
+Optionally disable the bar when not in raids/dungeons/world bosses.
+
+4.
+Scrape polymorph information from nameplates.
+
+5.
+Add sting tracker:
+- a small icon that shows the currently active sting in the sting suggestion icon.
+
+
+DONE:
+
 Add a Hunter/other class detector to HunterHelper core, and conditionally disable the system:
 - don't register events
 - hide the bar
 
-2.
-Handle cases where the Hunter doesn't have some spells
-- never suggest said spells
-- set size of bar icons to zero
-
-3.
-Optionally disable the bar when not in raids/dungeons/world bosses.
+Don't suggest spells when Hunter doesn't have them.
