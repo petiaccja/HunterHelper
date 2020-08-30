@@ -6,9 +6,7 @@
 SharpShooter.lua
 PolymorphCheck.lua
 SuggestionFrame.lua
-WarningFrame.lua
 Configuration.lua
 PolymorphCheck.xml
 SuggestionFrame.xml
-WarningFrame.xml
 Configuration.xml

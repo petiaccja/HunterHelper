@@ -149,7 +149,7 @@ function SharpShooter_PC:UpdateWarningFrame()
     local warnMulti = polyStatus_Log
     local blockSingle = polyStatus_Target
     local blockMulti = polyStatus_Raid or polyStatus_Party
-    SharpShooter_WF:Update(warnMulti, blockSingle, blockMulti)
+    SharpShooter_SF:UpdateBlocks(warnMulti, blockSingle, blockMulti)
 end
 
 

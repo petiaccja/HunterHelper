@@ -1,6 +1,8 @@
 SharpShooter_CFG = {}
 
 function SharpShooter_CFG:OnLoad()
+    SharpShooter_SF:OnLoad()
+
     SharpShooter_ConfigFrame:SetScript("OnEvent", SharpShooter_CFG.OnEvent);
     SharpShooter_ConfigFrame:RegisterEvent("VARIABLES_LOADED")
 
@@ -130,7 +132,7 @@ function SharpShooter_CFG:GetConfigFromGui()
     config.notargetAlpha = SharpShooter_ConfigNotargetAlpha:GetValue()
     config.warnPoly = SharpShooter_ConfigEnablePoly:GetChecked()
     config.warnFriendlyFire = SharpShooter_ConfigEnableFriendlyFire:GetChecked()
-    local xOffset, yOffset = SharpShooter_SuggestionFrame:GetCenter()
+    local xOffset, yOffset = SharpShooter_SF:GetConfigPosition()
     config.xPosition = xOffset
     config.yPosition = yOffset
     return config
@@ -153,51 +155,6 @@ function SharpShooter_CFG:ApplyConfig(config)
     SharpShooter_SF:SetConfigAlpha(config.combatAlpha, config.idleAlpha, config.notargetAlpha)
     SharpShooter_SF:SetConfigSize(config.size)
     SharpShooter_SF:SetConfigEnabled(config.enableBar)
-
-    SharpShooter_WF:SetConfigAlpha(config.combatAlpha, config.idleAlpha, config.notargetAlpha)
-    SharpShooter_WF:SetConfigSize(config.size)
-    SharpShooter_WF:SetConfigEnabled(config.enableBar)
-
-    if config.enableMove then
-        SharpShooter_CFG:EnableMove()
-    else
-        SharpShooter_CFG:DisableMove()
-    end
-
-    SharpShooter_SuggestionFrame:ClearAllPoints()
-    SharpShooter_SuggestionFrame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", config.xPosition, config.yPosition)
-end
-
-
-function SharpShooter_CFG:EnableMove()
-    SharpShooter_SuggestionFrame:SetMovable(true)
-    SharpShooter_SuggestionFrame:EnableMouse(true)
-    SharpShooter_SuggestionFrame:SetScript("OnMouseDown", function(self, button)
-        if button == "LeftButton" and not self.isMoving then
-            self:StartMoving();
-            self.isMoving = true;
-        end
-    end)
-    SharpShooter_SuggestionFrame:SetScript("OnMouseUp", function(self, button)
-        if button == "LeftButton" and self.isMoving then
-            self:StopMovingOrSizing();
-            self.isMoving = false;
-            local xOffset, yOffset = self:GetCenter(0)
-            local key = SharpShooter_CFG.characterName
-            g_sharpShooterConfig[key].xPosition = xOffset
-            g_sharpShooterConfig[key].yPosition = yOffset
-        end
-    end)
-    SharpShooter_SuggestionFrame:SetScript("OnHide", function(self)
-        if self.isMoving then
-            self:StopMovingOrSizing();
-            self.isMoving = false;
-        end
-    end)
-end
-
-
-function SharpShooter_CFG:DisableMove()
-    SharpShooter_SuggestionFrame:SetMovable(false)
-    SharpShooter_SuggestionFrame:EnableMouse(false)
+    SharpShooter_SF:SetConfigPosition(config.xPosition, config.yPosition)
+    SharpShooter_SF:SetConfigMovable(config.enableMove)
 end

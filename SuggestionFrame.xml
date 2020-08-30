@@ -4,7 +4,7 @@
                    ..\..\FrameXML\UI.xsd">
   <Script File="SuggestionFrame.lua"/>
   <Frame name="SharpShooter_SuggestionFrame">
-    <Size x="256" y="64"/>
+    <Size x="0" y="0"/>
     <Anchors>
       <Anchor point="TOPLEFT">
         <Offset>
@@ -12,68 +12,6 @@
         </Offset>
       </Anchor>
     </Anchors>
-    <Layers>
-      <Layer level="ARTWORK">
-        <Texture name="SharpShooter_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
-          <Size x="64" y="64"/>
-          <Color a="1" r="1" g="1" b="1"/>
-          <Anchors>
-            <Anchor point="LEFT"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_SuggestSerpent" file="interface/icons/ability_hunter_quickshot.blp">
-          <Size x="64" y="64"/>
-          <Color a="1" r="1" g="1" b="1"/>
-          <Anchors>
-            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestMark" relativePoint="RIGHT"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_SuggestAimed" file="interface/icons/inv_spear_07.blp">
-          <Size x="64" y="64"/>
-          <Color a="1" r="1" g="1" b="1"/>
-          <Anchors>
-            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestSerpent" relativePoint="RIGHT"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_SuggestMulti" file="interface/icons/ability_upgrademoonglaive.blp">
-          <Size x="64" y="64"/>
-          <Color a="1" r="1" g="1" b="1"/>
-          <Anchors>
-            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestAimed" relativePoint="RIGHT"/>
-          </Anchors>
-        </Texture>
-      </Layer>
-      <Layer level="BACKGROUND">
-        <Texture name="SharpShooter_BackgroundMark" file="Interface/Addons/SharpShooter/graphics/tick.blp">
-          <Size x="64" y="64"/>
-          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
-          <Anchors>
-            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestMark" relativePoint="CENTER"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_BackgroundSerpent" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
-          <Size x="64" y="64"/>
-          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
-          <Anchors>
-            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestSerpent" relativePoint="CENTER"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_BackgroundAimed" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
-          <Size x="64" y="64"/>
-          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
-          <Anchors>
-            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestAimed" relativePoint="CENTER"/>
-          </Anchors>
-        </Texture>
-        <Texture name="SharpShooter_BackgroundMulti" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
-          <Size x="64" y="64"/>
-          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
-          <Anchors>
-            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestMulti" relativePoint="CENTER"/>
-          </Anchors>
-        </Texture>
-      </Layer>
-    </Layers>
     <Scripts>
       <OnLoad>
         SharpShooter_SF:OnLoad()
