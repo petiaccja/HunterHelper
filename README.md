@@ -3,13 +3,12 @@ SharpShooter
 
 A utility addon for Hunters for World of Warcraft Classic.
 
+**Check note at the bottom on development status before using!**
+
 Introduction
 ---
 
 SharpShooter is intended to help you with your rotation, as well as warn you not to ruin it for others.
-
-**Check note at the bottom on development status before using!**
-
 
 Features:
 
@@ -18,6 +17,13 @@ Features:
 - Keeps track of the cooldowns of your Aimed Shot and Multi-Shot.
 - Analyzes your environment and warns you when you single shots or Multi-Shots can cancel important effects, such as Polymorph.
 - Warns you when a party or raid member may take friendly fire from your single shots of Multi-Shots.
+
+
+Installation
+---
+**Check note at the bottom on development status before using!**
+
+Click [here](https://github.com/petiaccja/SharpShooter/archive/master.zip) to grab the files. Extract the ZIP, rename the folder to "SharpShooter" instead of "SharpShooter-master", and copy it into your WoW addons folder.
 
 
 Polymorph & friendly fire
@@ -44,6 +50,7 @@ Other classes
 
 This addon has limited use for other classes, so by default it disables itself. The polymorph and friendly fire features can be useful with other classes, for spells like Arcane Explosion or Chain Lightning. If you want that, you can always enable the addon bar in the options, however, the UI is not tuned for this usage at all. If there is enough interest, I may be able to come up with something.
 
+
 Development Status
 ---
 
@@ -58,3 +65,4 @@ The UI is something that needs tuning, as the first step was to get the function
 
 License
 ---
+Sources are distributed under the MIT license.
