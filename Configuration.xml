@@ -3,18 +3,18 @@
                    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
                    ..\..\FrameXML\UI.xsd">
   <Script File="Configuration.lua"/>
-  <Frame name="HunterHelper_ConfigFrame">
+  <Frame name="SharpShooter_ConfigFrame">
     <Size x="400" y="400"/>
     <Anchors>
       <Anchor point="CENTER"/>
     </Anchors>
     <Scripts>
       <OnLoad>
-        HunterHelper_CFG:OnLoad()
+        SharpShooter_CFG:OnLoad()
       </OnLoad>
     </Scripts>
     <Frames>
-        <CheckButton name="HunterHelper_ConfigDraggable" inherits="OptionsCheckButtonTemplate" checked="false">
+        <CheckButton name="SharpShooter_ConfigDraggable" inherits="OptionsCheckButtonTemplate" checked="false">
             <Anchors>
                 <Anchor point="TOPLEFT">
                     <Offset>
@@ -23,18 +23,18 @@
                 </Anchor>
             </Anchors>
         </CheckButton>
-        <CheckButton name="HunterHelper_ConfigToggleBar" inherits="OptionsCheckButtonTemplate" checked="true">
+        <CheckButton name="SharpShooter_ConfigToggleBar" inherits="OptionsCheckButtonTemplate" checked="true">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigDraggable" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigDraggable" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0" y="0"/>
                     </Offset>
                 </Anchor>
             </Anchors>
         </CheckButton>
-        <Slider name="HunterHelper_ConfigScale" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="16" maxValue="256" valueStep="1">
+        <Slider name="SharpShooter_ConfigScale" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="16" maxValue="256" valueStep="1">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigToggleBar" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigToggleBar" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-20"/>
                     </Offset>
@@ -51,9 +51,9 @@
                 <Size x="32" y="32"/>
             </ThumbTexture>
         </Slider>
-        <Slider name="HunterHelper_ConfigCombatAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
+        <Slider name="SharpShooter_ConfigCombatAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigScale" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigScale" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-20"/>
                     </Offset>
@@ -70,9 +70,9 @@
                 <Size x="32" y="32"/>
             </ThumbTexture>
         </Slider>
-        <Slider name="HunterHelper_ConfigIdleAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
+        <Slider name="SharpShooter_ConfigIdleAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigCombatAlpha" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigCombatAlpha" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-20"/>
                     </Offset>
@@ -89,9 +89,9 @@
                 <Size x="32" y="32"/>
             </ThumbTexture>
         </Slider>
-        <Slider name="HunterHelper_ConfigNotargetAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
+        <Slider name="SharpShooter_ConfigNotargetAlpha" orientation="HORIZONTAL" enableMouse="true" virtual="true" minValue="0" maxValue="1" valueStep="0.01">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigIdleAlpha" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigIdleAlpha" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-20"/>
                     </Offset>
@@ -108,18 +108,18 @@
                 <Size x="32" y="32"/>
             </ThumbTexture>
         </Slider>
-        <CheckButton name="HunterHelper_ConfigEnablePoly" inherits="OptionsCheckButtonTemplate" checked="true">
+        <CheckButton name="SharpShooter_ConfigEnablePoly" inherits="OptionsCheckButtonTemplate" checked="true">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigNotargetAlpha" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigNotargetAlpha" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="-10"/>
                     </Offset>
                 </Anchor>
             </Anchors>
         </CheckButton>
-        <CheckButton name="HunterHelper_ConfigEnableFriendlyFire" inherits="OptionsCheckButtonTemplate" checked="true">
+        <CheckButton name="SharpShooter_ConfigEnableFriendlyFire" inherits="OptionsCheckButtonTemplate" checked="true">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeTo="HunterHelper_ConfigEnablePoly" relativePoint="BOTTOMLEFT">
+                <Anchor point="TOPLEFT" relativeTo="SharpShooter_ConfigEnablePoly" relativePoint="BOTTOMLEFT">
                     <Offset>
                         <AbsDimension x="0.0" y="0"/>
                     </Offset>
@@ -129,58 +129,58 @@
     </Frames>
     <Layers>
         <Layer>
-            <FontString name="HunterHelper_ConfigLabelDraggable" text="Unlock bar" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelDraggable" text="Unlock bar" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="LEFT" relativeTo="HunterHelper_ConfigDraggable" relativePoint="RIGHT"/>
+                    <Anchor point="LEFT" relativeTo="SharpShooter_ConfigDraggable" relativePoint="RIGHT"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelToggleBar" text="Show bar" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelToggleBar" text="Show bar" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="LEFT" relativeTo="HunterHelper_ConfigToggleBar" relativePoint="RIGHT"/>
+                    <Anchor point="LEFT" relativeTo="SharpShooter_ConfigToggleBar" relativePoint="RIGHT"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelScale" text="UI button size (pixels)" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelScale" text="UI button size (pixels)" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="HunterHelper_ConfigScale" relativePoint="TOP"/>
+                    <Anchor point="BOTTOM" relativeTo="SharpShooter_ConfigScale" relativePoint="TOP"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelCombatAlpha" text="In combat alpha" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelCombatAlpha" text="In combat alpha" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="HunterHelper_ConfigCombatAlpha" relativePoint="TOP"/>
+                    <Anchor point="BOTTOM" relativeTo="SharpShooter_ConfigCombatAlpha" relativePoint="TOP"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelIdleAlpha" text="Out of combat alpha" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelIdleAlpha" text="Out of combat alpha" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="HunterHelper_ConfigIdleAlpha" relativePoint="TOP"/>
+                    <Anchor point="BOTTOM" relativeTo="SharpShooter_ConfigIdleAlpha" relativePoint="TOP"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelNotargetAlpha" text="No target alpha" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelNotargetAlpha" text="No target alpha" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="HunterHelper_ConfigNotargetAlpha" relativePoint="TOP"/>
+                    <Anchor point="BOTTOM" relativeTo="SharpShooter_ConfigNotargetAlpha" relativePoint="TOP"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelDraggable" text="Warn for polymorphed targets" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelDraggable" text="Warn for polymorphed targets" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="LEFT" relativeTo="HunterHelper_ConfigEnablePoly" relativePoint="RIGHT"/>
+                    <Anchor point="LEFT" relativeTo="SharpShooter_ConfigEnablePoly" relativePoint="RIGHT"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>
             </FontString>
-            <FontString name="HunterHelper_ConfigLabelDraggable" text="Warn for friendly fire" font="Fonts\FRIZQT__.TTF">
+            <FontString name="SharpShooter_ConfigLabelDraggable" text="Warn for friendly fire" font="Fonts\FRIZQT__.TTF">
                 <Anchors>
-                    <Anchor point="LEFT" relativeTo="HunterHelper_ConfigEnableFriendlyFire" relativePoint="RIGHT"/>
+                    <Anchor point="LEFT" relativeTo="SharpShooter_ConfigEnableFriendlyFire" relativePoint="RIGHT"/>
                 </Anchors>
                 <Color r="1" g="1" b="1" a="1"/>
                 <FontHeight val="12"/>

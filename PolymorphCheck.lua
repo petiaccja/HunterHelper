@@ -1,4 +1,4 @@
-HunterHelper_PC = {}
+SharpShooter_PC = {}
 
 local function AuraInfo(duration)
     local auraInfo = {}
@@ -37,23 +37,23 @@ local COMBATLOG_OBJECT_REACTION_NEUTRAL	= 0x00000020
 local COMBATLOG_OBJECT_REACTION_FRIENDLY = 0x00000010
 
 
-function HunterHelper_PC:OnLoad()
-    HunterHelper_PolyFrame:SetScript("OnEvent", HunterHelper_PC.OnEvent)
-    HunterHelper_PolyFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-    HunterHelper_PolyFrame:RegisterEvent("UNIT_AURA")
-    HunterHelper_PolyFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-    HunterHelper_PC.sweepTicker = C_Timer.NewTicker(0.5, HunterHelper_PC.SweepExpired)
+function SharpShooter_PC:OnLoad()
+    SharpShooter_PolyFrame:SetScript("OnEvent", SharpShooter_PC.OnEvent)
+    SharpShooter_PolyFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+    SharpShooter_PolyFrame:RegisterEvent("UNIT_AURA")
+    SharpShooter_PolyFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+    SharpShooter_PC.sweepTicker = C_Timer.NewTicker(0.5, SharpShooter_PC.SweepExpired)
 end
 
 
-function HunterHelper_PC:OnEvent(event, ...)
+function SharpShooter_PC:OnEvent(event, ...)
     if eventHandlers[event] ~= nil then
         eventHandlers[event](...)
     end
 end
 
 
-function HunterHelper_PC:OnAuraApplied(destGUID, destName, destFlags, spellName)
+function SharpShooter_PC:OnAuraApplied(destGUID, destName, destFlags, spellName)
     local isDestAttackable = bit.band(destFlags, COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE
     or bit.band(destFlags, COMBATLOG_OBJECT_REACTION_NEUTRAL) == COMBATLOG_OBJECT_REACTION_NEUTRAL
     local isSpellTracked = trackedSpells[spellName] ~= nil
@@ -66,7 +66,7 @@ function HunterHelper_PC:OnAuraApplied(destGUID, destName, destFlags, spellName)
 end
 
 
-function HunterHelper_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
+function SharpShooter_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
     if unitTracker[destGUID] ~= nil then
         if unitTracker[destGUID][spellName] ~= nil then
             unitTracker[destGUID][spellName] = nil
@@ -78,7 +78,7 @@ function HunterHelper_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
 end
 
 
-function HunterHelper_PC:SweepExpired()
+function SharpShooter_PC:SweepExpired()
     local time = GetTime()
     for unitGUID, trackedSpells in pairs(unitTracker) do
         for spellName, expirationTime in pairs(trackedSpells) do
@@ -96,7 +96,7 @@ function HunterHelper_PC:SweepExpired()
 end
 
 
-function HunterHelper_PC:IsRaidMemberAttackable()
+function SharpShooter_PC:IsRaidMemberAttackable()
     for i=1,40 do
         local unitId = "raid" .. i
         local isAttackable = UnitCanAttack("player",unitId)
@@ -109,7 +109,7 @@ function HunterHelper_PC:IsRaidMemberAttackable()
 end
 
 
-function HunterHelper_PC:IsPartyMemberAttackable()
+function SharpShooter_PC:IsPartyMemberAttackable()
     for i=1,4 do
         local unitId = "party" .. i
         local isAttackable = UnitCanAttack("player",unitId)
@@ -122,12 +122,12 @@ function HunterHelper_PC:IsPartyMemberAttackable()
 end
 
 
-function HunterHelper_PC:IsTargetPolymorphed()
+function SharpShooter_PC:IsTargetPolymorphed()
     local attackable = UnitCanAttack("player","target")
     if not attackable then
         return false
     end
-    local auras = HunterHelper:GetAllAuras("target", "HARMFUL")
+    local auras = SharpShooter:GetAllAuras("target", "HARMFUL")
     for k,aura in pairs(auras) do
         if trackedSpells[aura.name] ~= nil then
             return true
@@ -137,11 +137,11 @@ function HunterHelper_PC:IsTargetPolymorphed()
 end
 
 
-function HunterHelper_PC:UpdateWarningFrame()
+function SharpShooter_PC:UpdateWarningFrame()
     local warnMulti = polyStatus_Log
     local blockSingle = polyStatus_Target
     local blockMulti = polyStatus_Raid or polyStatus_Party
-    HunterHelper_WF:Update(warnMulti, blockSingle, blockMulti)
+    SharpShooter_WF:Update(warnMulti, blockSingle, blockMulti)
 end
 
 
@@ -151,27 +151,27 @@ function eventHandlers:COMBAT_LOG_EVENT_UNFILTERED()
         = CombatLogGetCurrentEventInfo()
 
     if (event == "SPELL_AURA_APPLIED" or event == "SPELL_AURA_REFRESH") then
-        HunterHelper_PC:OnAuraApplied(destGUID, destName, destFlags, spellName)
+        SharpShooter_PC:OnAuraApplied(destGUID, destName, destFlags, spellName)
     elseif (event == "SPELL_AURA_REMOVED" or event == "SPELL_AURA_BROKEN") then
-        HunterHelper_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
+        SharpShooter_PC:OnAuraRemoved(destGUID, destName, destFlags, spellName)
     end
     
     polyStatus_Log = next(unitTracker) ~= nil    
-    HunterHelper_PC:UpdateWarningFrame()
+    SharpShooter_PC:UpdateWarningFrame()
 end
 
 
 function eventHandlers:UNIT_AURA()
-    polyStatus_Target = HunterHelper_PC:IsTargetPolymorphed()
-    polyStatus_Party = HunterHelper_PC:IsPartyMemberAttackable()
-    polyStatus_Raid = HunterHelper_PC:IsRaidMemberAttackable()
+    polyStatus_Target = SharpShooter_PC:IsTargetPolymorphed()
+    polyStatus_Party = SharpShooter_PC:IsPartyMemberAttackable()
+    polyStatus_Raid = SharpShooter_PC:IsRaidMemberAttackable()
 
-    HunterHelper_PC:UpdateWarningFrame()
+    SharpShooter_PC:UpdateWarningFrame()
 end
 
 
 function eventHandlers:PLAYER_TARGET_CHANGED()
-    polyStatus_Target = HunterHelper_PC:IsTargetPolymorphed()
+    polyStatus_Target = SharpShooter_PC:IsTargetPolymorphed()
 
-    HunterHelper_PC:UpdateWarningFrame()
+    SharpShooter_PC:UpdateWarningFrame()
 end

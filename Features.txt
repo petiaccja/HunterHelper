@@ -27,7 +27,7 @@ Add sting tracker:
 
 DONE:
 
-Add a Hunter/other class detector to HunterHelper core, and conditionally disable the system:
+Add a Hunter/other class detector to SharpShooter core, and conditionally disable the system:
 - don't register events
 - hide the bar
 

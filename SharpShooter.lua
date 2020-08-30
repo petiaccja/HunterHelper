@@ -1,7 +1,7 @@
-HunterHelper = {}
+SharpShooter = {}
 
 
-HunterHelper.Aspects = {
+SharpShooter.Aspects = {
     "Aspect of the Hawk",
     "Aspect of the Cheetah",
     "Aspect of the Pack",
@@ -11,7 +11,7 @@ HunterHelper.Aspects = {
 }
 
 
-HunterHelper.Stings = {
+SharpShooter.Stings = {
     "Scorpid Sting",
     "Serpent Sting",
     "Viper Sting",
@@ -19,7 +19,7 @@ HunterHelper.Stings = {
 }
 
 
-function HunterHelper:GetAllAuras(unit, filter)
+function SharpShooter:GetAllAuras(unit, filter)
     local auras = {}
     for i=1,40 do 
         local name, _, _, _, duration, expirationTime, unitCaster, _, _, _, _ = UnitAura(unit, i, filter)
@@ -36,10 +36,10 @@ function HunterHelper:GetAllAuras(unit, filter)
 end
 
 
-function HunterHelper:GetAspect()
-    local auras = HunterHelper:GetAllAuras("player", "PLAYER")
+function SharpShooter:GetAspect()
+    local auras = SharpShooter:GetAllAuras("player", "PLAYER")
     for k,aura in pairs(auras) do
-        for l,aspect in pairs(HunterHelper.Aspects) do
+        for l,aspect in pairs(SharpShooter.Aspects) do
             if aura.name == aspect then
                 return aura.name
             end
@@ -49,10 +49,10 @@ function HunterHelper:GetAspect()
 end
 
 
-function HunterHelper:GetSting()
-    local auras = HunterHelper:GetAllAuras("target", "PLAYER|HARMFUL")
+function SharpShooter:GetSting()
+    local auras = SharpShooter:GetAllAuras("target", "PLAYER|HARMFUL")
     for k,aura in pairs(auras) do
-        for l,aspect in pairs(HunterHelper.Stings) do
+        for l,aspect in pairs(SharpShooter.Stings) do
             if aura.name == aspect then
                 return aura.name
             end
@@ -62,8 +62,8 @@ function HunterHelper:GetSting()
 end
 
 
-function HunterHelper:GetMark()
-    local auras = HunterHelper:GetAllAuras("target", "HARMFUL")
+function SharpShooter:GetMark()
+    local auras = SharpShooter:GetAllAuras("target", "HARMFUL")
     for k,aura in pairs(auras) do
         if aura.name == "Hunter's Mark" then
             return true
@@ -73,17 +73,17 @@ function HunterHelper:GetMark()
 end
 
 
-function HunterHelper:IsPlayerHunter()
+function SharpShooter:IsPlayerHunter()
     return UnitClass("player") == "Hunter"
 end
 
 
-function HunterHelper:HasPlayerSpell(spell)
+function SharpShooter:HasPlayerSpell(spell)
     return GetSpellInfo(spell) ~= nil
 end
 
 
-function HunterHelper:HasAttackableTarget()
+function SharpShooter:HasAttackableTarget()
     local isEnemy = UnitCanAttack("player","target")
     local exists = UnitExists("target")
     local isDead = UnitIsDead("target")

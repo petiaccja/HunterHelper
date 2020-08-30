@@ -3,14 +3,14 @@
                    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
                    ..\..\FrameXML\UI.xsd">
   <Script File="PolymorphCheck.lua"/>
-  <Frame name="HunterHelper_PolyFrame">
+  <Frame name="SharpShooter_PolyFrame">
     <Size x="1" y="1"/>
     <Anchors>
       <Anchor point="CENTER" relativePoint="CENTER"/>
     </Anchors>
     <Scripts>
       <OnLoad>
-        HunterHelper_PC:OnLoad()
+        SharpShooter_PC:OnLoad()
       </OnLoad>
     </Scripts>
   </Frame>

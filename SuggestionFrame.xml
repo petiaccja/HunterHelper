@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
                    ..\..\FrameXML\UI.xsd">
   <Script File="SuggestionFrame.lua"/>
-  <Frame name="HunterHelper_SuggestionFrame">
+  <Frame name="SharpShooter_SuggestionFrame">
     <Size x="256" y="64"/>
     <Anchors>
       <Anchor point="TOPLEFT">
@@ -14,69 +14,69 @@
     </Anchors>
     <Layers>
       <Layer level="ARTWORK">
-        <Texture name="HunterHelper_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
+        <Texture name="SharpShooter_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
           <Size x="64" y="64"/>
           <Color a="1" r="1" g="1" b="1"/>
           <Anchors>
             <Anchor point="LEFT"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_SuggestSerpent" file="interface/icons/ability_hunter_quickshot.blp">
+        <Texture name="SharpShooter_SuggestSerpent" file="interface/icons/ability_hunter_quickshot.blp">
           <Size x="64" y="64"/>
           <Color a="1" r="1" g="1" b="1"/>
           <Anchors>
-            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestMark" relativePoint="RIGHT"/>
+            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestMark" relativePoint="RIGHT"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_SuggestAimed" file="interface/icons/inv_spear_07.blp">
+        <Texture name="SharpShooter_SuggestAimed" file="interface/icons/inv_spear_07.blp">
           <Size x="64" y="64"/>
           <Color a="1" r="1" g="1" b="1"/>
           <Anchors>
-            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestSerpent" relativePoint="RIGHT"/>
+            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestSerpent" relativePoint="RIGHT"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_SuggestMulti" file="interface/icons/ability_upgrademoonglaive.blp">
+        <Texture name="SharpShooter_SuggestMulti" file="interface/icons/ability_upgrademoonglaive.blp">
           <Size x="64" y="64"/>
           <Color a="1" r="1" g="1" b="1"/>
           <Anchors>
-            <Anchor point="LEFT" relativeTo="HunterHelper_SuggestAimed" relativePoint="RIGHT"/>
+            <Anchor point="LEFT" relativeTo="SharpShooter_SuggestAimed" relativePoint="RIGHT"/>
           </Anchors>
         </Texture>
       </Layer>
       <Layer level="BACKGROUND">
-        <Texture name="HunterHelper_BackgroundMark" file="Interface/Addons/HunterHelper/graphics/tick.blp">
+        <Texture name="SharpShooter_BackgroundMark" file="Interface/Addons/SharpShooter/graphics/tick.blp">
           <Size x="64" y="64"/>
           <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
           <Anchors>
-            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMark" relativePoint="CENTER"/>
+            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestMark" relativePoint="CENTER"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_BackgroundSerpent" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+        <Texture name="SharpShooter_BackgroundSerpent" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
           <Size x="64" y="64"/>
           <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
           <Anchors>
-            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestSerpent" relativePoint="CENTER"/>
+            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestSerpent" relativePoint="CENTER"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_BackgroundAimed" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+        <Texture name="SharpShooter_BackgroundAimed" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
           <Size x="64" y="64"/>
           <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
           <Anchors>
-            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestAimed" relativePoint="CENTER"/>
+            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestAimed" relativePoint="CENTER"/>
           </Anchors>
         </Texture>
-        <Texture name="HunterHelper_BackgroundMulti" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+        <Texture name="SharpShooter_BackgroundMulti" file="Interface/Addons/SharpShooter/graphics/hourglass.blp">
           <Size x="64" y="64"/>
           <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
           <Anchors>
-            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMulti" relativePoint="CENTER"/>
+            <Anchor point="CENTER" relativeTo="SharpShooter_SuggestMulti" relativePoint="CENTER"/>
           </Anchors>
         </Texture>
       </Layer>
     </Layers>
     <Scripts>
       <OnLoad>
-        HunterHelper_SF:OnLoad()
+        SharpShooter_SF:OnLoad()
       </OnLoad>
     </Scripts>
   </Frame>

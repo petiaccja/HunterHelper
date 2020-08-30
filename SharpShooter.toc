@@ -1,9 +1,9 @@
 ## Interface: 11305 
-## Title: HunterHelper
+## Title: SharpShooter
 ## Notes: A small AddOn that helps you with your rotation.
-## SavedVariables: g_hunterHelperConfig
+## SavedVariables: g_sharpShooterConfig
 ## Version: 1.0
-HunterHelper.lua
+SharpShooter.lua
 PolymorphCheck.lua
 SuggestionFrame.lua
 WarningFrame.lua
