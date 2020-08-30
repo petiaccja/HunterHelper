@@ -16,16 +16,24 @@ local polyStatus_Target = false
 
 local trackedSpells = {
     -- druid
+    ["Hibernate"] = AuraInfo(40),
     -- hunter
     ["Freezing Trap Effect"] = AuraInfo(20),
     ["Scare Beast"] = AuraInfo(20),
     -- mage
     ["Polymorph"] = AuraInfo(50),
     -- paladin
+    ["Turn Undead"] = AuraInfo(20),
+    -- priest
+    ["Psychic Scream"] = AuraInfo(8),
+    ["Shackle Undead"] = AuraInfo(50),
     -- rogue
     ["Sap"] = AuraInfo(45),
+    ["Blind"] = AuraInfo(10),
     -- shaman
     -- warlock
+    ["Fear"] = AuraInfo(20),
+    ["Howl of Terror"] = AuraInfo(15),
     -- warrior
     -- DEBUG:
     -- ["Hunter's Mark"] = AuraInfo(120),
