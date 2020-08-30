@@ -20,6 +20,33 @@ function HunterHelper_CFG:OnEvent(event, ...)
 end
 
 
+function HunterHelper_CFG:FirstLoginMessage()
+    local playerClassName = UnitClass("player")
+    local hunterColor = RAID_CLASS_COLORS["HUNTER"].colorStr
+    local playerColor = RAID_CLASS_COLORS[string.upper(playerClassName)].colorStr
+    local coloredPlayerClass = "\124c" .. playerColor .. playerClassName .."\124r"
+    local coloredAddonName = "\124c" .. hunterColor .. "HunterHelper" .."\124r"
+
+    local greeting = "Hi " .. coloredPlayerClass .. "! "
+    local disabledMessage = coloredAddonName .. " cannot help you on your journey. "
+        .. "It is now turned off for this character, however, you can enable it anytime in the AddOn options menu."
+    local enabledMessage = coloredAddonName .. " is at your service, please check out the configuration in the AddOn options menu."
+
+    if HunterHelper:IsPlayerHunter() then
+        print(enabledMessage)
+    else
+        print(greeting .. disabledMessage)
+    end
+end
+
+
+function HunterHelper_CFG:OptionsClearedMessage()
+    local hunterColor = RAID_CLASS_COLORS["HUNTER"].colorStr
+    local coloredAddonName = "\124c" .. hunterColor .. "HunterHelper" .."\124r"
+    print("Unfortunately your settings for " .. coloredAddonName .. " had to be cleared due to a new version of the AddOn. Please reconfigure.")
+end
+
+
 function HunterHelper_CFG:OnVariablesLoaded()
     if not g_hunterHelperConfig then
         g_hunterHelperConfig = {}
@@ -27,9 +54,11 @@ function HunterHelper_CFG:OnVariablesLoaded()
     local key = HunterHelper_CFG.characterName
     if g_hunterHelperConfig[key] == nil then
         g_hunterHelperConfig[key] = HunterHelper_CFG:CreateDefaultConfig()
+        HunterHelper_CFG:FirstLoginMessage()
     end
     if not HunterHelper_CFG:VerifyConfig(g_hunterHelperConfig[key]) then
         g_hunterHelperConfig[key] = HunterHelper_CFG:CreateDefaultConfig()
+        HunterHelper_CFG:OptionsClearedMessage()
     end
     HunterHelper_CFG:SetConfigToGui(g_hunterHelperConfig[key])
     HunterHelper_CFG:ApplyConfig(g_hunterHelperConfig[key])
@@ -54,15 +83,15 @@ end
 function HunterHelper_CFG:CreateDefaultConfig()
     local config = {}
     config.enableMove = false
-    config.enableBar = UnitClass("player") == "Hunter"
+    config.enableBar = HunterHelper:IsPlayerHunter()
     config.size = 64
     config.combatAlpha = 1.0
     config.idleAlpha = 0.3
     config.notargetAlpha = 0.0
     config.warnPoly = true
     config.warnFriendlyFire = true
-    config.xPosition = 0
-    config.yPosition = 0
+    config.xPosition = GetScreenWidth()/2
+    config.yPosition = GetScreenHeight()/2
     return config
 end
 
@@ -121,13 +150,20 @@ end
 
 
 function HunterHelper_CFG:ApplyConfig(config)
-    HunterHelper_SF:SetConfig(config)
-    HunterHelper_WF:SetConfig(config)
+    HunterHelper_SF:SetConfigAlpha(config.combatAlpha, config.idleAlpha, config.notargetAlpha)
+    HunterHelper_SF:SetConfigSize(config.size)
+    HunterHelper_SF:SetConfigEnabled(config.enableBar)
+
+    HunterHelper_WF:SetConfigAlpha(config.combatAlpha, config.idleAlpha, config.notargetAlpha)
+    HunterHelper_WF:SetConfigSize(config.size)
+    HunterHelper_WF:SetConfigEnabled(config.enableBar)
+
     if config.enableMove then
         HunterHelper_CFG:EnableMove()
     else
         HunterHelper_CFG:DisableMove()
     end
+
     HunterHelper_SuggestionFrame:ClearAllPoints()
     HunterHelper_SuggestionFrame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", config.xPosition, config.yPosition)
 end

@@ -13,15 +13,6 @@
       </Anchor>
     </Anchors>
     <Layers>
-      <Layer level="BACKGROUND">
-        <Texture name="HunterHelper_SuggestBackground">
-          <Size x="256" y="64"/>
-          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
-          <Anchors>
-            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestionFrame" relativePoint="CENTER"/>
-          </Anchors>
-        </Texture>
-      </Layer>
       <Layer level="ARTWORK">
         <Texture name="HunterHelper_SuggestMark" file="interface/icons/ability_hunter_snipershot.blp">
           <Size x="64" y="64"/>
@@ -49,6 +40,36 @@
           <Color a="1" r="1" g="1" b="1"/>
           <Anchors>
             <Anchor point="LEFT" relativeTo="HunterHelper_SuggestAimed" relativePoint="RIGHT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+      <Layer level="BACKGROUND">
+        <Texture name="HunterHelper_BackgroundMark" file="Interface/Addons/HunterHelper/graphics/tick.blp">
+          <Size x="64" y="64"/>
+          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMark" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_BackgroundSerpent" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+          <Size x="64" y="64"/>
+          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestSerpent" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_BackgroundAimed" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+          <Size x="64" y="64"/>
+          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestAimed" relativePoint="CENTER"/>
+          </Anchors>
+        </Texture>
+        <Texture name="HunterHelper_BackgroundMulti" file="Interface/Addons/HunterHelper/graphics/hourglass.blp">
+          <Size x="64" y="64"/>
+          <Color a="1.0" r="0.2" g="0.2" b="0.2"/>
+          <Anchors>
+            <Anchor point="CENTER" relativeTo="HunterHelper_SuggestMulti" relativePoint="CENTER"/>
           </Anchors>
         </Texture>
       </Layer>

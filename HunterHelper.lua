@@ -73,6 +73,19 @@ function HunterHelper:GetMark()
 end
 
 
-function HunterHelper:SetControlAlpha(control, alpha)
-    control:SetVertexColor(1,1,1,alpha)
+function HunterHelper:IsPlayerHunter()
+    return UnitClass("player") == "Hunter"
+end
+
+
+function HunterHelper:HasPlayerSpell(spell)
+    return GetSpellInfo(spell) ~= nil
+end
+
+
+function HunterHelper:HasAttackableTarget()
+    local isEnemy = UnitCanAttack("player","target")
+    local exists = UnitExists("target")
+    local isDead = UnitIsDead("target")
+    return not isDead and isEnemy and exists
 end

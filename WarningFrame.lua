@@ -1,6 +1,9 @@
 HunterHelper_WF = {}
 
-local enabled = true
+local combatAlpha = 1.0
+local iconSize = 64
+local isEnabled = false
+
 
 function HunterHelper_WF:OnLoad()
     HunterHelper_WF:Update(false, false, false)
@@ -13,7 +16,7 @@ function HunterHelper_WF:Update(warnMulti, blockSingle, blockMulti)
     HunterHelper_BlockMulti:Hide()
     HunterHelper_WarnMulti:Hide()
 
-    if not enabled then
+    if not isEnabled then
         return
     end
 
@@ -29,13 +32,39 @@ function HunterHelper_WF:Update(warnMulti, blockSingle, blockMulti)
 end
 
 
-function HunterHelper_WF:SetConfig(config)
-    local size = config.size * 0.7
-    HunterHelper_WarningFrame:SetSize(4*config.size, config.size)
-    HunterHelper_BlockSerpent:SetSize(size, size)
-    HunterHelper_BlockAimed:SetSize(size, size)
-    HunterHelper_BlockMulti:SetSize(size, size)
-    HunterHelper_WarnMulti:SetSize(size, size)
+function HunterHelper_WF:SetConfigAlpha(combatAlpha_, idleAlpha_, notargetAlpha_)
+    combatAlpha = combatAlpha_
+    HunterHelper_WF:UpdateAlpha()
+end
 
-    enabled = config.enableBar
+
+function HunterHelper_WF:SetConfigSize(size)
+    iconSize = size
+    HunterHelper_WF:UpdateSize()
+end
+
+
+function HunterHelper_WF:SetConfigEnabled(enable)
+    if not enable and isEnabled then
+        HunterHelper_BlockSerpent:Hide()
+        HunterHelper_BlockAimed:Hide()
+        HunterHelper_BlockMulti:Hide()
+        HunterHelper_WarnMulti:Hide()
+    end
+    isEnabled = enable
+end
+
+
+function HunterHelper_WF:UpdateAlpha()
+    HunterHelper_WarningFrame:SetAlpha(combatAlpha)
+end
+
+
+function HunterHelper_WF:UpdateSize()
+    local signSize = 0.75 * iconSize
+    HunterHelper_WarningFrame:SetSize(4*iconSize, iconSize)
+    HunterHelper_BlockSerpent:SetSize(signSize, signSize)
+    HunterHelper_BlockAimed:SetSize(signSize, signSize)
+    HunterHelper_BlockMulti:SetSize(signSize, signSize)
+    HunterHelper_WarnMulti:SetSize(signSize, signSize)
 end

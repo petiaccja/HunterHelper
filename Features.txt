@@ -4,3 +4,19 @@
 - warn to cast Aimed Shot if not on CD
 - warn if pet is left on aggressive mode
 - tell if you should cast hunter's mark
+
+
+TODO:
+
+1.
+Add a Hunter/other class detector to HunterHelper core, and conditionally disable the system:
+- don't register events
+- hide the bar
+
+2.
+Handle cases where the Hunter doesn't have some spells
+- never suggest said spells
+- set size of bar icons to zero
+
+3.
+Optionally disable the bar when not in raids/dungeons/world bosses.
